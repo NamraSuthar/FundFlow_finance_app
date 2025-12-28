@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FundFlow - Smart Financial Coaching</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FundFlow</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#budget" class="nav-link" data-page="budget">
+                        <i class="fas fa-wallet"></i>
+                        Budget
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#transactions" class="nav-link" data-page="transactions">
+                        <i class="fas fa-exchange-alt"></i>
+                        Transactions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#goals" class="nav-link" data-page="goals">
+                        <i class="fas fa-target"></i>
+                        Goals
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#coaching" class="nav-link" data-page="coaching">
+                        <i class="fas fa-graduation-cap"></i>
+                        Coaching
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <div class="page active" id="dashboard">
+            <div class="page-header">
+                <h1>Welcome back, Alex!</h1>
+                <p>Here's your financial overview for this month</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>₹1,245</h3>
+                        <p>Current Balance</p>
+                        <span class="stat-change positive">+5.2%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>₹850</h3>
+                        <p>Monthly Budget</p>
+                        <span class="stat-change neutral">78% used</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>₹320</h3>
+                        <p>Savings Goal</p>
+                        <span class="stat-change positive">+12%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>Alerts</p>
+                        <span class="stat-change negative">Action needed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cash Flow Chart -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h2>Cash Flow Trend</h2>
+                    <div class="chart-controls">
+                        <button class="btn-secondary active">7D</button>
+                        <button class="btn-secondary">1M</button>
+                        <button class="btn-secondary">3M</button>
+                    </div>
+                </div>
+                <div class="chart-placeholder">
+                    <canvas id="cashFlowChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- Recent Activity & Smart Insights -->
+            <div class="dashboard-grid">
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon expense">
+                                <i class="fas fa-coffee"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-title">Starbucks Coffee</p>
+                                <p class="activity-category">Food & Dining</p>
+                                <p class="activity-date">Today, 2:30 PM</p>
+                            </div>
+                            <div class="activity-amount expense">-₹5.50</div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon income">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-title">Monthly Stipend</p>
+                                <p class="activity-category">Income</p>
+                                <p class="activity-date">Yesterday</p>
+                            </div>
+                            <div class="activity-amount income">+₹800</div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon expense">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p class="activity-title">Textbooks</p>
+                                <p class="activity-category">Education</p>
+                                <p class="activity-date">2 days ago</p>
+                            </div>
+                            <div class="activity-amount expense">-₹120</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="smart-insights">
+                    <h2>Smart Insights</h2>
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="insight-content">
+                            <h3>Coffee Spending Alert</h3>
+                            <p>You've spent 40% more on coffee this week. Consider brewing at home to save ₹15/week.</p>
+                            <button class="btn-primary small">Set Reminder</button>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="insight-content">
+                            <h3>Great Progress!</h3>
+                            <p>You're 85% on track with your monthly budget. Keep up the good work!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget Page -->
+        <div class="page" id="budget">
+            <div class="page-header">
+                <h1>Monthly Budget</h1>
+                <p>Track and manage your spending categories</p>
+            </div>
+
+            <div class="budget-overview">
+                <div class="budget-summary">
+                    <div class="budget-circle">
+                        <canvas id="budgetChart" width="200" height="200"></canvas>
+                        <div class="budget-center">
+                            <h3>₹186</h3>
+                            <p>Remaining</p>
+                        </div>
+                    </div>
+                    <div class="budget-details">
+                        <div class="budget-item">
+                            <span class="budget-label">Total Budget</span>
+                            <span class="budget-amount">₹850</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-label">Spent</span>
+                            <span class="budget-amount spent">₹664</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-label">Remaining</span>
+                            <span class="budget-amount remaining">₹186</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="budget-categories">
+                <h2>Category Breakdown</h2>
+                <div class="category-list">
+                    <div class="category-item">
+                        <div class="category-header">
+                            <div class="category-info">
+                                <i class="fas fa-utensils"></i>
+                                <span class="category-name">Food & Dining</span>
+                            </div>
+                            <div class="category-amount">
+                                <span class="spent">₹180</span>
+                                <span class="budget">/ ₹200</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                        <p class="category-status warning">90% used - Consider meal prepping</p>
+                    </div>
+
+                    <div class="category-item">
+                        <div class="category-header">
+                            <div class="category-info">
+                                <i class="fas fa-car"></i>
+                                <span class="category-name">Transportation</span>
+                            </div>
+                            <div class="category-amount">
+                                <span class="spent">₹65</span>
+                                <span class="budget">/ ₹100</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <p class="category-status good">On track</p>
+                    </div>
+
+                    <div class="category-item">
+                        <div class="category-header">
+                            <div class="category-info">
+                                <i class="fas fa-gamepad"></i>
+                                <span class="category-name">Entertainment</span>
+                            </div>
+                            <div class="category-amount">
+                                <span class="spent">₹45</span>
+                                <span class="budget">/ ₹80</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 56%;"></div>
+                        </div>
+                        <p class="category-status good">Room for fun activities</p>
+                    </div>
+
+                    <div class="category-item">
+                        <div class="category-header">
+                            <div class="category-info">
+                                <i class="fas fa-book"></i>
+                                <span class="category-name">Education</span>
+                            </div>
+                            <div class="category-amount">
+                                <span class="spent">₹374</span>
+                                <span class="budget">/ ₹300</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill over-budget" style="width: 100%;"></div>
+                        </div>
+                        <p class="category-status danger">125% used - Over budget</p>
+                    </div>
+                </div>
+
+                <button class="btn-primary add-category">
+                    <i class="fas fa-plus"></i>
+                    Add Category
+                </button>
+            </div>
+        </div>
+
+        <!-- Transactions Page -->
+        <div class="page" id="transactions">
+            <div class="page-header">
+                <h1>Transactions</h1>
+                <p>View and categorize your financial activity</p>
+            </div>
+
+            <div class="transaction-filters">
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option>All Categories</option>
+                        <option>Food & Dining</option>
+                        <option>Transportation</option>
+                        <option>Education</option>
+                        <option>Entertainment</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>This Month</option>
+                        <option>Last Month</option>
+                        <option>Last 3 Months</option>
+                        <option>This Year</option>
+                    </select>
+                    <input type="text" class="search-input" placeholder="Search transactions...">
+                </div>
+                <button class="btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add Transaction
+                </button>
+            </div>
+
+            <div class="transaction-list">
+                <div class="transaction-item">
+                    <div class="transaction-icon income">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="transaction-details">
+                        <h3>Monthly Stipend</h3>
+                        <p>Income • University Grant</p>
+                        <span class="transaction-date">Oct 1, 2025</span>
+                    </div>
+                    <div class="transaction-amount income">+₹800.00</div>
+                    <button class="transaction-menu">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+
+                <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="transaction-details">
+                        <h3>Textbook Purchase</h3>
+                        <p>Education • Amazon</p>
+                        <span class="transaction-date">Oct 2, 2025</span>
+                    </div>
+                    <div class="transaction-amount expense">-₹120.00</div>
+                    <button class="transaction-menu">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+
+                <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="transaction-details">
+                        <h3>Lunch at Campus Cafe</h3>
+                        <p>Food & Dining • Campus Card</p>
+                        <span class="transaction-date">Oct 3, 2025</span>
+                    </div>
+                    <div class="transaction-amount expense">-₹12.50</div>
+                    <button class="transaction-menu">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+
+                <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="transaction-details">
+                        <h3>Uber Ride</h3>
+                        <p>Transportation • Uber</p>
+                        <span class="transaction-date">Oct 3, 2025</span>
+                    </div>
+                    <div class="transaction-amount expense">-₹15.75</div>
+                    <button class="transaction-menu">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+
+                <div class="transaction-item">
+                    <div class="transaction-icon expense">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="transaction-details">
+                        <h3>Morning Coffee</h3>
+                        <p>Food & Dining • Starbucks</p>
+                        <span class="transaction-date">Oct 4, 2025</span>
+                    </div>
+                    <div class="transaction-amount expense">-₹5.50</div>
+                    <button class="transaction-menu">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goals Page -->
+        <div class="page" id="goals">
+            <div class="page-header">
+                <h1>Financial Goals</h1>
+                <p>Set and track your savings objectives</p>
+            </div>
+
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <div class="goal-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="goal-info">
+                            <h3>Emergency Fund</h3>
+                            <p>Build 3-month expense buffer</p>
+                        </div>
+                    </div>
+                    <div class="goal-progress">
+                        <div class="progress-info">
+                            <span class="current">₹320</span>
+                            <span class="target">/ ₹1,500</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 21%;"></div>
+                        </div>
+                        <p class="progress-text">21% complete • 8 months to go</p>
+                    </div>
+                    <div class="goal-actions">
+                        <button class="btn-secondary">Adjust</button>
+                        <button class="btn-primary">Add ₹50</button>
+                    </div>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <div class="goal-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="goal-info">
+                            <h3>New Laptop</h3>
+                            <p>MacBook for coding projects</p>
+                        </div>
+                    </div>
+                    <div class="goal-progress">
+                        <div class="progress-info">
+                            <span class="current">₹450</span>
+                            <span class="target">/ ₹1,200</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 38%;"></div>
+                        </div>
+                        <p class="progress-text">38% complete • 4 months to go</p>
+                    </div>
+                    <div class="goal-actions">
+                        <button class="btn-secondary">Adjust</button>
+                        <button class="btn-primary">Add ₹100</button>
+                    </div>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <div class="goal-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="goal-info">
+                            <h3>Spring Break Trip</h3>
+                            <p>Week in Costa Rica</p>
+                        </div>
+                    </div>
+                    <div class="goal-progress">
+                        <div class="progress-info">
+                            <span class="current">₹180</span>
+                            <span class="target">/ ₹800</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 23%;"></div>
+                        </div>
+                        <p class="progress-text">23% complete • 5 months to go</p>
+                    </div>
+                    <div class="goal-actions">
+                        <button class="btn-secondary">Adjust</button>
+                        <button class="btn-primary">Add ₹75</button>
+                    </div>
+                </div>
+
+                <div class="add-goal-card">
+                    <div class="add-goal-content">
+                        <i class="fas fa-plus"></i>
+                        <h3>Create New Goal</h3>
+                        <p>Set a new savings target</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="goal-insights">
+                <h2>Goal Insights</h2>
+                <div class="insight-grid">
+                    <div class="insight-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="insight-content">
+                            <h4>On Track Performance</h4>
+                            <p>You're meeting 2 of 3 goal targets this month. Great consistency!</p>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <div class="insight-content">
+                            <h4>Optimization Tip</h4>
+                            <p>Automate ₹75/month to emergency fund for faster progress.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coaching Page -->
+        <div class="page" id="coaching">
+            <div class="page-header">
+                <h1>Financial Coaching</h1>
+                <p>Personalized guidance for better money habits</p>
+            </div>
+
+            <div class="coaching-dashboard">
+                <div class="coaching-score">
+                    <div class="score-circle">
+                        <canvas id="scoreChart" width="150" height="150"></canvas>
+                        <div class="score-center">
+                            <h2>78</h2>
+                            <p>Finance Score</p>
+                        </div>
+                    </div>
+                    <div class="score-breakdown">
+                        <div class="score-item">
+                            <span class="score-label">Budgeting</span>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 85%;"></div>
+                            </div>
+                            <span class="score-value">85%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Saving</span>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 70%;"></div>
+                            </div>
+                            <span class="score-value">70%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Consistency</span>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 80%;"></div>
+                            </div>
+                            <span class="score-value">80%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weekly-challenge">
+                    <h3>This Week's Challenge</h3>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <div class="challenge-content">
+                            <h4>Coffee Shop Alternatives</h4>
+                            <p>Try brewing coffee at home 4 out of 7 days this week. Potential savings: ₹15</p>
+                            <div class="challenge-progress">
+                                <span>Progress: 2/4 days</span>
+                                <div class="progress-bar mini">
+                                    <div class="progress-fill" style="width: 50%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-primary small">Log Success</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coaching-modules">
+                <h2>Learning Modules</h2>
+                <div class="module-grid">
+                    <div class="module-card completed">
+                        <div class="module-header">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="module-status">Completed</span>
+                        </div>
+                        <h3>Budgeting Basics</h3>
+                        <p>Learn the 50/30/20 rule and how to create your first budget.</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <span>5/5 lessons</span>
+                        </div>
+                    </div>
+
+                    <div class="module-card in-progress">
+                        <div class="module-header">
+                            <i class="fas fa-play-circle"></i>
+                            <span class="module-status">In Progress</span>
+                        </div>
+                        <h3>Emergency Fund Strategy</h3>
+                        <p>Build financial security with smart emergency fund planning.</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%;"></div>
+                            </div>
+                            <span>3/5 lessons</span>
+                        </div>
+                        <button class="btn-primary">Continue</button>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-lock"></i>
+                            <span class="module-status">Locked</span>
+                        </div>
+                        <h3>Investment Fundamentals</h3>
+                        <p>Start investing as a student with minimal risk strategies.</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%;"></div>
+                            </div>
+                            <span>0/6 lessons</span>
+                        </div>
+                        <p class="unlock-text">Complete Emergency Fund module to unlock</p>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-lock"></i>
+                            <span class="module-status">Locked</span>
+                        </div>
+                        <h3>Credit & Debt Management</h3>
+                        <p>Build credit responsibly and manage student loans effectively.</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%;"></div>
+                            </div>
+                            <span>0/4 lessons</span>
+                        </div>
+                        <p class="unlock-text">Complete Investment module to unlock</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coaching-tips">
+                <h2>Today's Tips</h2>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Meal Prep Sunday</h4>
+                            <p>Planning meals for the week can save you ₹30-50 on food expenses.</p>
+                            <button class="btn-secondary small">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Student Discounts</h4>
+                            <p>Use your .edu email for discounts on software, streaming, and more.</p>
+                            <button class="btn-secondary small">Find Deals</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal" id="addTransactionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Transaction</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form class="transaction-form">
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" step="0.01" placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" placeholder="What was this for?" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select required>
+                        <option value="">Select category</option>
+                        <option value="food">Food & Dining</option>
+                        <option value="transport">Transportation</option>
+                        <option value="education">Education</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Transaction</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>
